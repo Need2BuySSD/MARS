@@ -186,3 +186,5 @@ cython_debug/
 /output
 /models
 /tmp
+/models-002
+/data_old-003
