@@ -15,7 +15,7 @@ python run_flant5.py `
   --split [None | str] `
   --max-input-length 2048 `
   --batch-size 1 `
-  --max-sentinels 50 `
+  --max-sentinels 30 `
   --chunk-overlap-sentences 2 
 ```
 
