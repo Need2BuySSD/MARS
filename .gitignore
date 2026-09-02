@@ -179,12 +179,10 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
-/data
-/data
-/models
+/data/*
+/models/*
 /reports
-/output
-/models
-/tmp
+/output/*
+/tmp/*
 /models-002
 /data_old-003
