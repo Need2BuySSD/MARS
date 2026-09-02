@@ -12,7 +12,7 @@ python run_flant5.py `
   --dataset data/mars_test_200 `
   --split [None | str] `
   --max-input-length 2048 `
-  --batch-size 2 `
+  --batch-size 1 `
   --max-sentinels 50 `
   --chunk-overlap-sentences 2 
 ```
