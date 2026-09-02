@@ -4,13 +4,7 @@
 
 ## Run
 
-Run from the repository root, in the same Python environment used for the notebooks:
-
-```powershell
-python run_flant5.py --dataset data/mars_test_200
-```
-
-The default model is `models/flan-t5-base-aligned-2k/final`. To use another local checkpoint or Hugging Face model ID:
+Run from the repository root. Recommended settings:
 
 ```powershell
 python run_flant5.py `
@@ -21,6 +15,15 @@ python run_flant5.py `
   --batch-size 2 `
   --max-sentinels 50 `
   --chunk-overlap-sentences 2 
+```
+
+The default model is `models/flan-t5-base-aligned-2k/final`. To use another local checkpoint or Hugging Face model ID:
+
+```powershell
+python run_flant5.py `
+  --model models/flan-t5-base-aligned-2k/final `
+  --dataset data/mars_test_200 `
+```
 
 ## Dataset requirements
 
@@ -46,7 +49,7 @@ For `--metrics recoverability_errors`, the dataset must also include `entity_rec
 Example:
 
 ```powershell
-python run_flant5.py --dataset data/all_data_1000_2k --split multi_news
+python run_flant5.py --dataset data/mars_test_200_split --split test
 ```
 
 ## Long documents and many masks
