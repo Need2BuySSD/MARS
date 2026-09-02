@@ -1,8 +1,10 @@
-# MARS FLAN-T5 evaluation runner
+# MARS
+
+## MARS FLAN-T5 evaluation runner
 
 `run_flant5.py` runs a FLAN-T5 checkpoint on a saved Hugging Face dataset, evaluates its entity-recovery predictions, creates analytics plots, and writes a self-contained HTML report.
 
-## Run
+### Run
 
 Run from the repository root. Recommended settings:
 
@@ -25,7 +27,7 @@ python run_flant5.py `
   --dataset data/mars_test_200 `
 ```
 
-## Dataset requirements
+### Dataset requirements
 
 The dataset must have been written with `datasets.save_to_disk()` and must contain these columns:
 
@@ -40,7 +42,7 @@ The dataset must have been written with `datasets.save_to_disk()` and must conta
 
 For `--metrics recoverability_errors`, the dataset must also include `entity_recoverable`, with one label per masked entity.
 
-### Plain Dataset versus DatasetDict
+#### Plain Dataset versus DatasetDict
 
 - A plain `Dataset` needs only `--dataset`; `--split` is ignored.
 - With a `DatasetDict`, use `--split test` to run one split.
@@ -52,7 +54,7 @@ Example:
 python run_flant5.py --dataset data/mars_test_200_split --split test
 ```
 
-## Long documents and many masks
+### Long documents and many masks
 
 The FLAN-T5 predictor chunks rows automatically. It keeps every mask prediction in original order and merges chunk predictions back into one prediction per dataset row.
 
@@ -70,7 +72,7 @@ python run_flant5.py `
 
 Rows are skipped only when their masks are malformed, a single sentence cannot fit, or the configured overlap plus one effective sentence cannot fit within the chunk limits.
 
-## Useful options
+### Useful options
 
 ```text
 --batch-size N                  FLAN-T5 generation batch size (default: 2)
@@ -87,7 +89,7 @@ Supported metrics are `exact_match`, `entity_type_errors`, `recoverability_error
 
 On CUDA, FLAN-T5 loads in FP16. CPU runs use FP32 and are substantially slower.
 
-## Output
+### Output
 
 Without `--output`, each run creates a new directory under `output/`:
 
@@ -108,10 +110,11 @@ It contains:
 
 Open `prediction_report.html` in a browser. All rows with successful predictions are expanded by default; hover a highlighted entity to see its evaluation detail.
 
-## Dependencies
+### Dependencies
 
 The runner needs the project inference/evaluation dependencies, plus the selected spaCy model. If spaCy reports that `en_core_web_trf` is missing, install it in the active environment:
 
 ```powershell
+python -m pip install -r requirements.txt
 python -m spacy download en_core_web_trf
 ```

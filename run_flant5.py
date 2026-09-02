@@ -400,16 +400,9 @@ mark.paired-hover {{ box-shadow:0 0 0 3px #2d6cdf,0 0 0 6px rgba(45,108,223,.22)
 
 
 def run(args: argparse.Namespace) -> Path:
-    try:
-        import spacy
-        import torch
-        from datasets import DatasetDict, concatenate_datasets, load_from_disk
-    except ImportError as error:
-        raise RuntimeError(
-            "Missing Python dependencies. Run this command in the same environment "
-            "used by the project notebooks."
-        ) from error
-
+    import spacy
+    import torch
+    from datasets import DatasetDict, concatenate_datasets, load_from_disk
     from evaluation import evaluation_metrics as evaluator
     from evaluation.evaluation_plots import (
         validate_plot_dependencies,
